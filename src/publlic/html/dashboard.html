@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Conta | KORT STORE</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script defer src="../js/main.js"></script>
+</head>
+<body>
+  <div class="dashboard-sidebar glass">
+    <a href="index.html" class="sidebar-back-btn" title="Voltar para o site">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" class="back-arrow-svg">
+        <polyline points="18,6 10,14 18,22" stroke="#7b8cfd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <animate attributeName="points" values="18,6 10,14 18,22;18,8 10,14 18,20;18,6 10,14 18,22" dur="2s" repeatCount="indefinite"/>
+        </polyline>
+      </svg>
+      <span class="sidebar-back-label">Voltar</span>
+    </a>
+    <div class="sidebar-top">
+      <div class="sidebar-logo-small">
+        <img src="../../assets/imgs/LOGO_LOJA.png" alt="Logo KORT Store" width="32" height="32">
+      </div>
+      <div class="sidebar-user-area">
+        <div class="sidebar-avatar-anim">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="avatar-svg"><circle cx="32" cy="32" r="28" fill="#23263a"/><circle cx="32" cy="32" r="28" stroke="#7b8cfd" stroke-width="2"><animate attributeName="r" values="28;30;28" dur="2.5s" repeatCount="indefinite"/></circle><text id="dashboardAvatarText" x="50%" y="56%" text-anchor="middle" fill="#7b8cfd" font-size="28" font-family="Arial" dy=".3em">U</text></svg>
+        </div>
+        <div class="sidebar-userinfo">
+          <div class="sidebar-username" id="dashboardUsername">Usuário</div>
+          <div class="sidebar-role" id="dashboardRole">Cargo</div>
+        </div>
+      </div>
+    </div>
+    <nav class="sidebar-menu">
+      <button class="sidebar-menu-item active" data-tab="dados">
+        <span class="sidebar-menu-icon">
+          <!-- SVG Home animado -->
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" class="icon-anim"><path d="M4 12L13 5L22 12" stroke="#b3b8d8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="stroke" values="#b3b8d8;#7b8cfd;#b3b8d8" dur="2s" repeatCount="indefinite"/></path><rect x="7.5" y="13" width="11" height="7" rx="2" stroke="#b3b8d8" stroke-width="2"><animate attributeName="stroke" values="#b3b8d8;#7b8cfd;#b3b8d8" dur="2s" repeatCount="indefinite"/></rect></svg>
+        </span>
+        <span class="sidebar-menu-label">Dados</span>
+      </button>
+      <button class="sidebar-menu-item" data-tab="assinaturas">
+        <span class="sidebar-menu-icon">
+          <!-- SVG Diamond animado -->
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" class="icon-anim"><polygon points="13,4 22,11 13,22 4,11" stroke="#b3b8d8" stroke-width="2.2" fill="none"><animate attributeName="stroke" values="#b3b8d8;#7b8cfd;#b3b8d8" dur="2s" repeatCount="indefinite"/></polygon><polyline points="4,11 13,11 22,11" stroke="#b3b8d8" stroke-width="2"><animate attributeName="stroke" values="#b3b8d8;#7b8cfd;#b3b8d8" dur="2s" repeatCount="indefinite"/></polyline></svg>
+        </span>
+        <span class="sidebar-menu-label">Assinaturas</span>
+      </button>
+      <button class="sidebar-menu-item" data-tab="pagamento">
+        <span class="sidebar-menu-icon">
+          <!-- SVG Cartão animado -->
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" class="icon-anim"><rect x="4" y="7" width="18" height="12" rx="3" stroke="#b3b8d8" stroke-width="2.2"><animate attributeName="stroke" values="#b3b8d8;#7b8cfd;#b3b8d8" dur="2s" repeatCount="indefinite"/></rect><rect x="7" y="15" width="5" height="2" rx="1" fill="#7b8cfd"><animate attributeName="fill" values="#7b8cfd;#b3b8d8;#7b8cfd" dur="2s" repeatCount="indefinite"/></rect></svg>
+        </span>
+        <span class="sidebar-menu-label">Pagamento</span>
+      </button>
+      <button class="sidebar-menu-item" data-tab="historico">
+        <span class="sidebar-menu-icon">
+          <!-- SVG Clock animado -->
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" class="icon-anim"><circle cx="13" cy="13" r="9" stroke="#b3b8d8" stroke-width="2.2"><animate attributeName="stroke" values="#b3b8d8;#7b8cfd;#b3b8d8" dur="2s" repeatCount="indefinite"/></circle><line x1="13" y1="13" x2="13" y2="8" stroke="#7b8cfd" stroke-width="2"><animate attributeName="y2" values="8;13;8" dur="2s" repeatCount="indefinite"/></line><line x1="13" y1="13" x2="17" y2="13" stroke="#7b8cfd" stroke-width="2"><animate attributeName="x2" values="17;13;17" dur="2s" repeatCount="indefinite"/></line></svg>
+        </span>
+        <span class="sidebar-menu-label">Histórico</span>
+      </button>
+      <button class="sidebar-menu-item sidebar-logout" data-tab="logout">
+        <span class="sidebar-menu-icon">
+          <!-- SVG Logout animado -->
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" class="icon-anim"><path d="M16 8V5a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-3" stroke="#ff7b7b" stroke-width="2.2"><animate attributeName="stroke" values="#ff7b7b;#b3b8d8;#ff7b7b" dur="2s" repeatCount="indefinite"/></path><polyline points="19,16 23,13 19,10" stroke="#ff7b7b" stroke-width="2.2" fill="none"><animate attributeName="stroke" values="#ff7b7b;#b3b8d8;#ff7b7b" dur="2s" repeatCount="indefinite"/></polyline><line x1="23" y1="13" x2="10" y2="13" stroke="#ff7b7b" stroke-width="2.2"><animate attributeName="stroke" values="#ff7b7b;#b3b8d8;#ff7b7b" dur="2s" repeatCount="indefinite"/></line></svg>
+        </span>
+        <span class="sidebar-menu-label">Logout</span>
+      </button>
+    </nav>
+  </div>
+  <main class="dashboard-main glass">
+    <section class="dashboard-panel" id="tab-dados">
+      <div class="panel-header">
+        <span class="panel-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#7b8cfd" stroke-width="2"><animate attributeName="r" values="14;16;14" dur="2s" repeatCount="indefinite"/></circle><path d="M10 24c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="#b3b8d8" stroke-width="2" stroke-linecap="round"><animate attributeName="stroke" values="#b3b8d8;#7b8cfd;#b3b8d8" dur="2s" repeatCount="indefinite"/></path><circle cx="16" cy="13" r="4" stroke="#b3b8d8" stroke-width="2"><animate attributeName="stroke" values="#b3b8d8;#7b8cfd;#b3b8d8" dur="2s" repeatCount="indefinite"/></circle></svg>
+        </span>
+        <div>
+          <h1>Dados da Conta</h1>
+          <p class="panel-subtitle">Gerencie suas informações pessoais e segurança.</p>
+        </div>
+      </div>
+      <div class="panel-info-list panel-no-card">
+        <div><span>Usuário:</span> <span id="dashboardUserValue">-</span></div>
+        <div><span>Email:</span> <span id="dashboardEmailValue">-</span></div>
+        <div><span>Cargo:</span> <span id="dashboardRoleValue">-</span></div>
+      </div>
+      <div class="panel-actions panel-no-card">
+        <button class="dashboard-btn dashboard-edit">Editar Perfil</button>
+      </div>
+    </section>
+    <section class="dashboard-panel" id="tab-assinaturas" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><polygon points="16,4 28,14 16,28 4,14" stroke="#7b8cfd" stroke-width="2" fill="none"><animate attributeName="stroke" values="#7b8cfd;#b3b8d8;#7b8cfd" dur="2s" repeatCount="indefinite"/></polygon></svg>
+        </span>
+        <div>
+          <h1>Assinaturas</h1>
+          <p class="panel-subtitle">Veja e gerencie seus apps e planos ativos.</p>
+        </div>
+      </div>
+      <div class="panel-list panel-no-card">
+        <div class="panel-list-item">
+          <div class="panel-list-title">Kortex 5 <span class="badge badge-ativo">Ativo</span></div>
+          <div class="panel-list-actions">
+            <button class="dashboard-btn dashboard-list-btn">Gerenciar</button>
+          </div>
+        </div>
+        <div class="panel-list-item">
+          <div class="panel-list-title">App Booster <span class="badge badge-cancelado">Cancelado</span></div>
+          <div class="panel-list-actions">
+            <button class="dashboard-btn dashboard-list-btn">Reativar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="dashboard-panel" id="tab-pagamento" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" rx="4" stroke="#7b8cfd" stroke-width="2"><animate attributeName="stroke" values="#7b8cfd;#b3b8d8;#7b8cfd" dur="2s" repeatCount="indefinite"/></rect><rect x="8" y="20" width="8" height="3" rx="1.5" fill="#7b8cfd"><animate attributeName="fill" values="#7b8cfd;#b3b8d8;#7b8cfd" dur="2s" repeatCount="indefinite"/></rect></svg>
+        </span>
+        <div>
+          <h1>Formas de Pagamento</h1>
+          <p class="panel-subtitle">Gerencie cartões e métodos de pagamento.</p>
+        </div>
+      </div>
+      <div class="panel-list panel-no-card">
+        <div class="panel-list-item">
+          <div class="panel-list-title">Cartão final 1234 <span class="badge badge-ativo">Principal</span></div>
+          <div class="panel-list-actions">
+            <button class="dashboard-btn dashboard-list-btn">Remover</button>
+          </div>
+        </div>
+        <div class="panel-list-actions" style="margin-top:1.2rem;">
+          <button class="dashboard-btn">Adicionar Novo Cartão</button>
+        </div>
+      </div>
+    </section>
+    <section class="dashboard-panel" id="tab-historico" style="display:none;">
+      <div class="panel-header">
+        <span class="panel-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="#7b8cfd" stroke-width="2"><animate attributeName="stroke" values="#7b8cfd;#b3b8d8;#7b8cfd" dur="2s" repeatCount="indefinite"/></circle><line x1="16" y1="16" x2="16" y2="9" stroke="#7b8cfd" stroke-width="2"><animate attributeName="y2" values="9;16;9" dur="2s" repeatCount="indefinite"/></line><line x1="16" y1="16" x2="22" y2="16" stroke="#7b8cfd" stroke-width="2"><animate attributeName="x2" values="22;16;22" dur="2s" repeatCount="indefinite"/></line></svg>
+        </span>
+        <div>
+          <h1>Histórico de Compras</h1>
+          <p class="panel-subtitle">Veja todas as suas compras e pagamentos.</p>
+        </div>
+      </div>
+      <div class="panel-list panel-no-card">
+        <div class="panel-list-item">
+          <div class="panel-list-title">Kortex 5 <span class="badge badge-pago">Pago</span></div>
+          <div class="panel-list-details">
+            <span class="panel-list-date">10/06/2024</span>
+            <span class="panel-list-price">R$ 59,90</span>
+          </div>
+        </div>
+        <div class="panel-list-item">
+          <div class="panel-list-title">App Booster <span class="badge badge-cancelado">Cancelado</span></div>
+          <div class="panel-list-details">
+            <span class="panel-list-date">02/05/2024</span>
+            <span class="panel-list-price">R$ 29,90</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="infobox" class="infobox" style="display:none;"><span class="infobox-icon">ℹ️</span><span id="infoboxMsg"></span><button class="infobox-close" id="closeInfobox">&times;</button></div>
+</body>
+</html> 

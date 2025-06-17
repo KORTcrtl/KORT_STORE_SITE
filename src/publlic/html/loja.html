@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja | KORT STORE</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script defer src="../js/main.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="../../assets/imgs/LOGO_LOJA.png" alt="Logo KORT Store" width="48" height="48" style="border-radius:50%;box-shadow:0 0 16px #7b8cfd55;">
+        <span>KORT STORE</span>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="loja.html" class="active">Loja</a></li>
+          <li><a href="index.html#beneficios">Benefícios</a></li>
+          <li><a href="index.html#como-funciona">Como Funciona</a></li>
+          <li><a href="index.html#planos">Planos</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="nav-icons">
+        <button class="cart-btn" aria-label="Carrinho">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="21" r="1.5" fill="#7b8cfd"/><circle cx="19" cy="21" r="1.5" fill="#7b8cfd"/><path d="M2 3h2l2.4 12.29A2 2 0 008.32 17h7.36a2 2 0 001.92-1.71L21 6H6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="profile-menu">
+          <button class="profile-btn" aria-label="Perfil">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#7b8cfd" stroke-width="2"/><path d="M4 20c0-3.31 3.13-6 8-6s8 2.69 8 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="profile-dropdown">
+            <a href="#" class="login-link">Entrar</a>
+            <a href="#" class="register-link">Criar Conta</a>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" aria-label="Abrir menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect y="4" width="24" height="2" rx="1" fill="#fff"/><rect y="11" width="24" height="2" rx="1" fill="#fff"/><rect y="18" width="24" height="2" rx="1" fill="#fff"/></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <section class="store-hero">
+      <div class="container">
+        <div class="store-highlight-card">
+          <div class="store-highlight-info">
+            <span class="badge-destaque">LANÇAMENTO</span>
+            <h1>Kortex 5</h1>
+            <p>O app definitivo para otimização de sistema, internet e desempenho. Interface moderna, fácil de usar e resultados comprovados!</p>
+            <div class="store-prices">
+              <span class="old-price">R$ 99,90</span>
+              <span class="promo-price">R$ 59,90</span>
+              <span class="promo-badge">-40%</span>
+            </div>
+            <button class="cta-btn add-cart">Adicionar ao Carrinho</button>
+          </div>
+          <div class="store-highlight-img">
+            <img src="../../assets/imgs/pcgame.png" alt="Kortex 5 App" style="max-width:220px;">
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <section class="store-products">
+      <div class="container">
+        <h2>Apps em Destaque</h2>
+        <div class="product-grid">
+          <div class="product-card destaque">
+            <span class="badge-destaque">MAIS VENDIDO</span>
+            <img src="../../assets/imgs/LOGO_LOJA.png" alt="Kortex 5" class="product-img">
+            <h3>Kortex 5</h3>
+            <p>Otimização total do seu PC e internet.</p>
+            <div class="store-prices">
+              <span class="old-price">R$ 99,90</span>
+              <span class="promo-price">R$ 59,90</span>
+              <span class="promo-badge">-40%</span>
+            </div>
+            <button class="plan-btn add-cart">Adicionar ao Carrinho</button>
+          </div>
+          <div class="product-card">
+            <img src="../../assets/imgs/LOGO_LOJA.png" alt="App 2" class="product-img">
+            <h3>App Booster</h3>
+            <p>Melhore a performance de apps pesados.</p>
+            <div class="store-prices">
+              <span class="promo-price">R$ 29,90</span>
+            </div>
+            <button class="plan-btn add-cart">Adicionar ao Carrinho</button>
+          </div>
+          <div class="product-card">
+            <img src="../../assets/imgs/LOGO_LOJA.png" alt="App 3" class="product-img">
+            <h3>Net Guard</h3>
+            <p>Proteja sua conexão e navegação.</p>
+            <div class="store-prices">
+              <span class="promo-price">R$ 19,90</span>
+            </div>
+            <button class="plan-btn add-cart">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="infobox" class="infobox" style="display:none;"><span class="infobox-icon">ℹ️</span><span id="infoboxMsg"></span><button class="infobox-close" id="closeInfobox">&times;</button></div>
+</body>
+</html> 

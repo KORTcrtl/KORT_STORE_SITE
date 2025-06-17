@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | KORT STORE</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script defer src="../js/main.js"></script>
+</head>
+<body style="background: #13141a; min-height: 100vh;">
+  <main>
+    <div style="width:100%;max-width:480px;margin:0 auto;padding-top:2.5rem;">
+      <a href="loja.html" class="back-link main-back-link">&larr; Voltar para a Loja</a>
+    </div>
+    <section class="login-section login-dark-bg" style="padding-top:0;">
+      <div class="login-glass-card" id="loginCard">
+        <img src="../../assets/imgs/LOGO_LOJA.png" alt="Logo KORT Store" width="90">
+        <h1 id="loginTitle" class="login-title">Entrar na sua conta</h1>
+        <form id="loginForm" autocomplete="off" class="login-form-modern">
+          <input type="text" id="loginUsername" placeholder="Usuário" required autocomplete="username">
+          <input type="password" id="loginPassword" placeholder="Senha" required autocomplete="current-password">
+          <button type="submit" class="neon-btn" id="loginBtn">Entrar</button>
+        </form>
+        <form id="registerForm" style="display:none;" autocomplete="off" class="login-form-modern">
+          <input type="text" id="registerUsername" placeholder="Usuário" required autocomplete="username">
+          <input type="email" id="registerEmail" placeholder="E-mail" required autocomplete="email">
+          <input type="password" id="registerPassword" placeholder="Senha" required autocomplete="new-password">
+          <input type="password" id="registerPassword2" placeholder="Confirmar senha" required autocomplete="new-password">
+          <button type="submit" class="neon-btn" id="registerBtn">Criar Conta</button>
+        </form>
+        <form id="recoverFormPanel" style="display:none;" autocomplete="off" class="login-form-modern">
+          <input type="text" id="recoverUsername" placeholder="Usuário" required autocomplete="username">
+          <input type="email" id="recoverEmail" placeholder="E-mail" required autocomplete="email">
+          <input type="password" id="recoverLastPassword" placeholder="Última senha que lembra" required autocomplete="off">
+          <button type="submit" class="neon-btn">Enviar recuperação</button>
+        </form>
+        <div id="loginMsg" style="width:100%;margin-top:0.7rem;"></div>
+        <div class="login-panel-actions">
+          <button type="button" class="panel-action-btn" id="showLogin" style="display:none;">Já tenho conta</button>
+          <button type="button" class="panel-action-btn" id="showRegister">Criar Conta</button>
+          <button type="button" class="panel-action-btn" id="showRecover">Recuperar Conta</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="infobox" class="infobox" style="display:none;"><span class="infobox-icon">ℹ️</span><span id="infoboxMsg"></span><button class="infobox-close" id="closeInfobox">&times;</button></div>
+</body>
+</html> 
