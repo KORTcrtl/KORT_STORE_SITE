@@ -187,14 +187,20 @@ if (window.location.pathname.includes('login.html')) {
       // Simulação de resposta real do backend:
       // Aqui você faria a requisição real ao backend...
       // Supondo sucesso, resposta:
-      const resposta = {
+      // Exemplo de resposta do backend:
+      const respostaBackend = {
         username: username,
         email: username + '@exemplo.com', // Simule ou use resposta real
-        role: username === 'admin' ? 'Administrador' : 'Cliente'
+        cargo: username === 'admin' ? 'Administrador' : 'CEO'
       };
-      // Salvar usuário completo
-      localStorage.setItem('kortex_user', JSON.stringify(resposta));
-      triggerInfoboxNextPage('Bem-vindo, ' + resposta.username + '!');
+      // Salvar usuário completo, compatível com cargo/role
+      const userToSave = {
+        username: respostaBackend.username,
+        email: respostaBackend.email,
+        role: respostaBackend.role || respostaBackend.cargo || '-'
+      };
+      localStorage.setItem('kortex_user', JSON.stringify(userToSave));
+      triggerInfoboxNextPage('Bem-vindo, ' + userToSave.username + '!');
       setTimeout(() => { window.location.href = 'index.html'; }, 200);
     });
   }
@@ -334,8 +340,9 @@ function setDashboardUser(user) {
   if (nameEl) nameEl.textContent = username;
   if (userVal) userVal.textContent = username;
   if (emailVal) emailVal.textContent = user.email || '-';
-  if (roleVal) roleVal.textContent = user.role || '-';
-  if (sidebarRole) sidebarRole.textContent = user.role || '-';
+  const cargo = user.role || user.cargo || '-';
+  if (roleVal) roleVal.textContent = cargo;
+  if (sidebarRole) sidebarRole.textContent = cargo;
 }
 // Exemplo: pegar usuário do localStorage
 try {
@@ -382,8 +389,9 @@ function setDashboardUser(user) {
   if (nameEl) nameEl.textContent = username;
   if (userVal) userVal.textContent = username;
   if (emailVal) emailVal.textContent = user.email || '-';
-  if (roleVal) roleVal.textContent = user.role || '-';
-  if (sidebarRole) sidebarRole.textContent = user.role || '-';
+  const cargo = user.role || user.cargo || '-';
+  if (roleVal) roleVal.textContent = cargo;
+  if (sidebarRole) sidebarRole.textContent = cargo;
 }
 // Ao carregar dashboard, garantir exibição correta
 if (window.location.pathname.includes('dashboard.html')) {
