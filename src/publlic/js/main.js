@@ -216,12 +216,38 @@ if (window.location.pathname.includes('login.html')) {
   }
   const registerForm = document.getElementById('registerForm');
   if (registerForm) {
-    registerForm.addEventListener('submit', function(e) {
+    registerForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const username = document.getElementById('registerUsername').value;
-      setUserSession({username});
-      triggerInfoboxNextPage('Conta criada com sucesso! Bem-vindo, ' + username + '!');
-      setTimeout(() => { window.location.href = 'index.html'; }, 200);
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      const password2 = document.getElementById('registerPassword2').value;
+      const loginMsg = document.getElementById('loginMsg');
+      if (password !== password2) {
+        loginMsg.textContent = 'As senhas não coincidem.';
+        loginMsg.style.color = '#ff7b7b';
+        return;
+      }
+      loginMsg.textContent = 'Criando conta...';
+      loginMsg.style.color = '#7b8cfd';
+      try {
+        const res = await fetch('http://localhost:4000/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          triggerInfoboxNextPage('Conta criada com sucesso! Faça login.');
+          setTimeout(() => { window.location.href = 'login.html'; }, 400);
+        } else {
+          loginMsg.textContent = data.error || 'Erro ao criar conta.';
+          loginMsg.style.color = '#ff7b7b';
+        }
+      } catch (err) {
+        loginMsg.textContent = 'Erro ao conectar ao servidor.';
+        loginMsg.style.color = '#ff7b7b';
+      }
     });
   }
   const recoverFormPanel = document.getElementById('recoverFormPanel');
