@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
+const http = require('http');
+const WebSocket = require('ws');
 
 const app = express();
 app.use(express.json());
@@ -98,5 +100,39 @@ app.get('/api/me', auth, (req, res) => {
   res.json({ user: req.user });
 });
 
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+// Mapeia conexões WebSocket por userId
+const userSockets = new Map();
+
+wss.on('connection', (ws, req) => {
+  // Espera o frontend enviar o token JWT logo após conectar
+  ws.on('message', (msg) => {
+    try {
+      const { token } = JSON.parse(msg);
+      if (!token) return;
+      const decoded = jwt.verify(token, JWT_SECRET);
+      const userId = decoded.id;
+      userSockets.set(userId, ws);
+      ws.userId = userId;
+    } catch {}
+  });
+  ws.on('close', () => {
+    if (ws.userId) userSockets.delete(ws.userId);
+  });
+});
+
+// Change Stream para monitorar alterações na coleção de usuários
+User.watch().on('change', (change) => {
+  if (change.operationType === 'update' || change.operationType === 'replace') {
+    const userId = change.documentKey._id.toString();
+    const ws = userSockets.get(userId);
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ type: 'user_update' }));
+    }
+  }
+});
+
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log('Servidor rodando na porta', PORT)); 
+server.listen(PORT, () => console.log('Servidor rodando na porta', PORT)); 
