@@ -113,6 +113,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (logoutLink) {
       logoutLink.addEventListener('click', function(e) {
         e.preventDefault();
+        localStorage.removeItem('kortex_user');
+        localStorage.removeItem('kortex_token');
         clearUserSession();
         triggerInfoboxNextPage('Você saiu da sua conta.');
         window.location.reload();
@@ -181,27 +183,33 @@ function checkInfoboxOnLoad() {
 if (window.location.pathname.includes('login.html')) {
   const loginForm = document.getElementById('loginForm');
   if (loginForm) {
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const username = document.getElementById('loginUsername').value;
-      // Simulação de resposta real do backend:
-      // Aqui você faria a requisição real ao backend...
-      // Supondo sucesso, resposta:
-      // Exemplo de resposta do backend:
-      const respostaBackend = {
-        username: username,
-        email: username + '@exemplo.com', // Simule ou use resposta real
-        cargo: username === 'admin' ? 'Administrador' : 'CEO'
-      };
-      // Salvar usuário completo, compatível com cargo/role
-      const userToSave = {
-        username: respostaBackend.username,
-        email: respostaBackend.email,
-        role: respostaBackend.role || respostaBackend.cargo || '-'
-      };
-      localStorage.setItem('kortex_user', JSON.stringify(userToSave));
-      triggerInfoboxNextPage('Bem-vindo, ' + userToSave.username + '!');
-      setTimeout(() => { window.location.href = 'index.html'; }, 200);
+      const password = document.getElementById('loginPassword').value;
+      const loginMsg = document.getElementById('loginMsg');
+      loginMsg.textContent = 'Entrando...';
+      loginMsg.style.color = '#7b8cfd';
+      try {
+        const res = await fetch('http://localhost:4000/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (res.ok && data.token) {
+          localStorage.setItem('kortex_user', JSON.stringify(data.user));
+          localStorage.setItem('kortex_token', data.token);
+          triggerInfoboxNextPage('Bem-vindo, ' + data.user.username + '!');
+          setTimeout(() => { window.location.href = 'index.html'; }, 200);
+        } else {
+          loginMsg.textContent = data.error || 'Usuário ou senha inválidos.';
+          loginMsg.style.color = '#ff7b7b';
+        }
+      } catch (err) {
+        loginMsg.textContent = 'Erro ao conectar ao servidor.';
+        loginMsg.style.color = '#ff7b7b';
+      }
     });
   }
   const registerForm = document.getElementById('registerForm');
